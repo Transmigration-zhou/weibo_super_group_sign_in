@@ -1,3 +1,21 @@
+# Fork 版本说明
+
+本仓库在原项目基础上增加了 GitHub Actions 自动签到功能，可以实现每日自动签到。
+目前只支持运行 weibo_chaohua_sign.py。
+
+## GitHub Actions 配置步骤
+
+1. **配置 Secrets**
+   - 进入 Settings > Secrets and variables > Actions
+   - 点击 "New repository secret" 添加以下配置：
+     - `weibo_my_cookie`：微博 Cookie（必需）
+
+2. **启用 Actions**
+   - 进入 Actions 标签页
+   - 确认启用 Workflows
+   - 默认每天早上 8 点自动运行签到脚本
+---
+
 # 微博超话一键签到 & 发微博工具
 
 [![访问量统计](https://komarev.com/ghpvc/?username=wd210010&style=flat-square)](https://github.com/)
