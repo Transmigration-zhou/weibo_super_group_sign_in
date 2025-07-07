@@ -1,0 +1,29 @@
+name: Weibo Super Group Sign In
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 0:00 运行，即北京时间 8:00
+  workflow_dispatch:      # 允许手动触发
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        
+    - name: Run sign in script
+      env:
+        weibo_my_cookie: ${{ secrets.weibo_my_cookie }}
+      run: |
+        python weibo_chaohua_sign.py 
