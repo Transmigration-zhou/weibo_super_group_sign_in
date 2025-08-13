@@ -106,6 +106,8 @@ if __name__ == "__main__":
         card_type_11_info = get_card_type_11(params, headers, since_id)  # 传递 since_id 到函数中
         
         if not card_type_11_info:  # 如果没有数据，停止循环
+            if since_id == 1:
+                raise Exception("Cookie may have expired.")
             break
         
         super_topic_list = "\n".join([f"    {info['title_sub']}" for info in card_type_11_info])
